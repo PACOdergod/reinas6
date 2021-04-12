@@ -4,37 +4,37 @@ import 'limpiar.dart';
 
 main(List<String> args) {
   var tamano = 4;
-  var columnas = [1, 2, 3, 4];
-  var filas = [1, 2, 3, 4];
+  var columnas = [1, 2, 3];
+  var filas = [1, 2, 3];
   var total_casillas = [
     [1, 1],
     [1, 2],
     [1, 3],
-    [1, 4],
+    // [1, 4],
     [2, 1],
     [2, 2],
     [2, 3],
-    [2, 4],
+    // [2, 4],
     [3, 1],
     [3, 2],
     [3, 3],
-    [3, 4],
-    [4, 1],
-    [4, 2],
-    [4, 3],
-    [4, 4],
+    // [3, 4],
+    // [4, 1],
+    // [4, 2],
+    // [4, 3],
+    // [4, 4],
   ];
 
   var primerContexto = Contexto(total_casillas, filas, columnas, []);
 
-  crearRamificaciones(primerContexto, [[1,1]]);
+  crearRamificaciones(primerContexto, total_casillas);
   var data = SingletonData();
   data.imprimir();
 }
 
 crearRamificaciones(Contexto contexto, List<List<int>> total_casillas) {
   for (var casilla in total_casillas) {
-    var res = eliminarOcupadas(contexto, casilla);
+    var res = limpiar(contexto, casilla);
     if (res.casillas.isNotEmpty)
       crearRamificaciones(res, res.casillas);
     else {

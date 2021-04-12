@@ -26,12 +26,12 @@ main(List<String> args) {
   var data = SingletonData();
 
   var primerContexto = Contexto(total_casillas, filas, columnas, []);
-  var res = eliminarOcupadas(primerContexto, [1, 1]);
+  var res = limpiar(primerContexto, [1, 1]);
 
   for (var c in res.casillas){
-    var res2 = eliminarOcupadas(res, c);
+    var res2 = limpiar(res, c);
     for (var cas in res2.casillas) {
-      var res3 = eliminarOcupadas(res2, cas);
+      var res3 = limpiar(res2, cas);
         
       data.agregarInfo(res3.reinasAnteriores);
     }
@@ -42,7 +42,7 @@ main(List<String> args) {
   data.imprimir();
 }
 
-Contexto eliminarOcupadas(Contexto contexto, List<int> nuevaReina) {
+Contexto limpiar(Contexto contexto, List<int> nuevaReina) {
   // recibire la casilla donde estara la reina
   // y del contexto obtendre todas las listas
   // para los calculos
