@@ -7,8 +7,10 @@ class SingletonData {
 
   SingletonData._internal();
 
+  List<String> casillas = [];
+
   List<String> data = [];
-  agregarInfo(List<List<int>> reinas) => data.add(reinas.toString());
+  agregarInfo(List<int> reinas) => data.add(reinas.toString());
 
   imprimir() {
     for (var reinas in data) print(reinas);

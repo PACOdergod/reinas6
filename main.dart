@@ -24,11 +24,12 @@ main(List<String> args) {
     // [4, 3],
     // [4, 4],
   ];
+  var data = SingletonData();
+  total_casillas.forEach((element) => data.casillas.add(element.toString()));
 
   var primerContexto = Contexto(total_casillas, filas, columnas, []);
 
   crearRamificaciones(primerContexto, total_casillas);
-  var data = SingletonData();
   data.imprimir();
 }
 

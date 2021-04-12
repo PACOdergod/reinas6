@@ -4,7 +4,7 @@ class Contexto {
   List<int> crecientes;
   List<int> decrecientes;
   List<List<int>> casillas;
-  List<List<int>> reinasAnteriores;
+  List<int> reinasAnteriores;
 
   Contexto(
     this.casillas, this.filas, this.columnas,this.reinasAnteriores, 
