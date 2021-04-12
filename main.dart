@@ -24,12 +24,22 @@ main(List<String> args) {
   ];
 
   var primerContexto = Contexto(total_casillas, filas, columnas, []);
-  var res = eliminarOcupadas(primerContexto, [1, 1]);
 
+  crearRamificaciones(primerContexto, total_casillas);
   var data = SingletonData();
-
-  data.agregarInfo(res.reinasAnteriores);
   data.imprimir();
+}
+
+crearRamificaciones(Contexto contexto, List<List<int>> total_casillas) {
+  for (var casilla in total_casillas) {
+    var res = eliminarOcupadas(contexto, casilla);
+    if (res.casillas.isNotEmpty)
+      crearRamificaciones(res, res.casillas);
+    else {
+      var data = SingletonData();
+      data.agregarInfo(res.reinasAnteriores);
+    }
+  }
 }
 
 Contexto eliminarOcupadas(Contexto contexto, List<int> nuevaReina) {
@@ -73,7 +83,6 @@ Contexto eliminarOcupadas(Contexto contexto, List<int> nuevaReina) {
       crecientes: crecientesOcupadas, decrecientes: decrecientesOcupadas);
 }
 
-
 class SingletonData {
   static final SingletonData _singleton = SingletonData._internal();
 
@@ -86,6 +95,7 @@ class SingletonData {
   List<String> data = [];
   agregarInfo(List<List<int>> reinas) => data.add(reinas.toString());
 
-  imprimir() => print(data);
+  imprimir() {
+    for (var reinas in data) print(reinas);
+  }
 }
-
