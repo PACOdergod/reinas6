@@ -30,6 +30,8 @@ main(List<String> args) {
   var primerContexto = Contexto(total_casillas, filas, columnas, []);
 
   crearRamificaciones(primerContexto, total_casillas);
+  
+  data.limpiarDuplicados();
   data.imprimir();
 }
 
@@ -42,7 +44,6 @@ crearRamificaciones(Contexto contexto, List<List<int>> total_casillas) {
       var data = SingletonData();
       res.reinasAnteriores.sort();
       data.agregarInfo(res.reinasAnteriores);
-      
     }
   }
 }

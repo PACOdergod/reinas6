@@ -13,6 +13,10 @@ class SingletonData {
   agregarInfo(List<int> reinas) => _data.add(reinas.toString());
   List<String> get listaReinas => _data;
 
+  limpiarDuplicados() {
+    _data = _data.toSet().toList();
+  }
+
   imprimir() {
     for (var reinas in _data) print(reinas);
   }
