@@ -9,10 +9,11 @@ class SingletonData {
 
   List<String> casillas = [];
 
-  List<String> data = [];
-  agregarInfo(List<int> reinas) => data.add(reinas.toString());
+  List<String> _data = [];
+  agregarInfo(List<int> reinas) => _data.add(reinas.toString());
+  List<String> get listaReinas => _data;
 
   imprimir() {
-    for (var reinas in data) print(reinas);
+    for (var reinas in _data) print(reinas);
   }
 }

@@ -5,7 +5,7 @@ import 'limpiar.dart';
 main(List<String> args) {
   var tamano = 4;
   var columnas = [1, 2, 3, 4];
-  var filas = [1, 2, 3,4];
+  var filas = [1, 2, 3, 4];
   var total_casillas = [
     [1, 1],
     [1, 2],
@@ -40,7 +40,9 @@ crearRamificaciones(Contexto contexto, List<List<int>> total_casillas) {
       crearRamificaciones(res, res.casillas);
     else {
       var data = SingletonData();
+      res.reinasAnteriores.sort();
       data.agregarInfo(res.reinasAnteriores);
+      
     }
   }
 }
