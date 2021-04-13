@@ -10,10 +10,14 @@ class SingletonData {
 
   SingletonData._internal();
 
+  int tamano = 0;
   List<String> casillas = [];
 
   List<String> _data = [];
-  agregarInfo(List<int> reinas) => _data.add(reinas.toString());
+  agregarInfo(List<int> reinas) {
+    if(reinas.length >= tamano) _data.add(reinas.toString());
+  }
+
   List<String> get listaReinas => _data;
 
   limpiarDuplicados() {
