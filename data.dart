@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 class SingletonData {
   static final SingletonData _singleton = SingletonData._internal();
 
@@ -19,5 +22,10 @@ class SingletonData {
 
   imprimir() {
     for (var reinas in _data) print(reinas);
+  }
+
+  guardarData(int t) {
+    var file = new File('${t}x${t}.json');
+    file.writeAsString(jsonEncode(_data));
   }
 }
