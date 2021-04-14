@@ -12,10 +12,11 @@ class SingletonData {
 
   int tamano = 0;
   List<String> casillas = [];
+  // List<List<String>> totalCasillas = [];
 
   List<String> _data = [];
   agregarInfo(List<int> reinas) {
-    if(reinas.length >= tamano) _data.add(reinas.toString());
+    if (reinas.length >= tamano) _data.add(reinas.toString());
   }
 
   List<String> get listaReinas => _data;

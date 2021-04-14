@@ -3,7 +3,7 @@ import 'data.dart';
 import 'limpiar.dart';
 
 main(List<String> args) {
-  var tamano = 9;
+  var tamano = 8;
   var columnas = List.generate(tamano, (index) => index + 1);
   var filas = List.generate(tamano, (index) => index + 1);
   List<List<int>> total_casillas = [];
@@ -22,24 +22,30 @@ main(List<String> args) {
 
   // aqui inicia el algoritmo
   var primerContexto = Contexto(total_casillas, filas, columnas, []);
-  for (var c in listaInicio) {
-    var con = limpiar(primerContexto, c);
-    crearRamificaciones(con, con.casillas);
-  }
-  // crearRamificaciones(primerContexto, listaInicio);
+  // for (var c in listaInicio) {
+  //   var con = limpiar(primerContexto, c);
+  //   crearRamificaciones(con, con.casillas);
+  // }
+  crearRamificaciones(primerContexto, listaInicio, 1);
 
   // una vez terminado el calculo hay que limpiar
   // la data y guardarla
   data.limpiarDuplicados();
-  // data.imprimir();
+  data.imprimir();
   data.guardarData(tamano);
 }
 
-crearRamificaciones(Contexto contexto, List<List<int>> total_casillas) {
-  for (var casilla in total_casillas) {
+crearRamificaciones(
+    Contexto contexto, List<List<int>> total_casillas, int columna) {
+  // eliminar todas las casillas que sean diferentes a la columna
+  var casillasAnalizar = List.from(
+    total_casillas.where((cas) => cas.first == columna));
+
+  // print("casillas a analizar $casillasAnalizar");
+  for (var casilla in casillasAnalizar) {
     var res = limpiar(contexto, casilla);
     if (res.casillas.isNotEmpty)
-      crearRamificaciones(res, res.casillas);
+      crearRamificaciones(res, res.casillas, columna+1);
     else {
       var data = SingletonData();
       res.reinasAnteriores.sort();
