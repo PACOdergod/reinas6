@@ -25,9 +25,9 @@ main(List<String> args) {
   var primerContexto = Contexto(total_casillas, filas, columnas, []);
   // inicio del algoritmo
   crearRamificaciones(primerContexto, listaInicio);
-  data.limpiarDuplicados();
-  // data.imprimir();
-  data.guardarData(tamano);
+  // data.limpiarDuplicados();
+  data.imprimir();
+  // data.guardarData(tamano);
 }
 
 crearRamificaciones(Contexto contexto, List<List<int>> total_casillas) {
