@@ -14,18 +14,23 @@ main(List<String> args) {
     });
   });
 
-  var aux = total_casillas.take(tamano);
-  List<List<int>> listaInicio = List.from(aux);
+  List<List<int>> listaInicio = List.from(total_casillas.take(tamano));
 
   var data = SingletonData();
   data.tamano = tamano;
   total_casillas.forEach((element) => data.casillas.add(element.toString()));
 
-
+  // aqui inicia el algoritmo
   var primerContexto = Contexto(total_casillas, filas, columnas, []);
-  // inicio del algoritmo
-  crearRamificaciones(primerContexto, listaInicio);
-  // data.limpiarDuplicados();
+  for (var c in listaInicio) {
+    var con = limpiar(primerContexto, c);
+    crearRamificaciones(con, con.casillas);
+  }
+  // crearRamificaciones(primerContexto, listaInicio);
+
+  // una vez terminado el calculo hay que limpiar
+  // la data y guardarla
+  data.limpiarDuplicados();
   data.imprimir();
   // data.guardarData(tamano);
 }
