@@ -3,7 +3,7 @@ import 'data.dart';
 import 'limpiar.dart';
 
 main(List<String> args) {
-  var tamano = 8;
+  var tamano = 4;
   var columnas = List.generate(tamano, (index) => index + 1);
   var filas = List.generate(tamano, (index) => index + 1);
   List<List<int>> total_casillas = [];
@@ -21,10 +21,10 @@ main(List<String> args) {
   data.tamano = tamano;
   total_casillas.forEach((element) => data.casillas.add(element.toString()));
 
+
   var primerContexto = Contexto(total_casillas, filas, columnas, []);
-
+  // inicio del algoritmo
   crearRamificaciones(primerContexto, listaInicio);
-
   data.limpiarDuplicados();
   // data.imprimir();
   data.guardarData(tamano);
