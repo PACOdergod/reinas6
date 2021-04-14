@@ -9,4 +9,6 @@ class Contexto {
   Contexto(
     this.casillas, this.filas, this.columnas,this.reinasAnteriores, 
     {this.crecientes = const [], this.decrecientes = const []});
+
+  
 }
