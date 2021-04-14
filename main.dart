@@ -4,8 +4,8 @@ import 'limpiar.dart';
 
 main(List<String> args) {
   var tamano = 8;
-  var columnas = List.generate(tamano, (index) => index+1);
-  var filas = List.generate(tamano, (index) => index+1);
+  var columnas = List.generate(tamano, (index) => index + 1);
+  var filas = List.generate(tamano, (index) => index + 1);
   List<List<int>> total_casillas = [];
   columnas.forEach((c) {
     filas.forEach((f) {
@@ -14,24 +14,8 @@ main(List<String> args) {
     });
   });
 
-  // [
-  //   [1, 1],
-  //   [1, 2],
-  //   [1, 3],
-  //   [1, 4],
-  //   [2, 1],
-  //   [2, 2],
-  //   [2, 3],
-  //   [2, 4],
-  //   [3, 1],
-  //   [3, 2],
-  //   [3, 3],
-  //   [3, 4],
-  //   [4, 1],
-  //   [4, 2],
-  //   [4, 3],
-  //   [4, 4],
-  // ];
+  var aux = total_casillas.take(tamano);
+  List<List<int>> listaInicio = List.from(aux);
 
   var data = SingletonData();
   data.tamano = tamano;
@@ -39,7 +23,7 @@ main(List<String> args) {
 
   var primerContexto = Contexto(total_casillas, filas, columnas, []);
 
-  crearRamificaciones(primerContexto, total_casillas);
+  crearRamificaciones(primerContexto, listaInicio);
 
   data.limpiarDuplicados();
   // data.imprimir();
