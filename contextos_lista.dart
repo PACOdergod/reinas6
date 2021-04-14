@@ -8,11 +8,10 @@ class ListaContextos {
   int index = 0;
   List<Contexto> listaContextos = [];
 
-
   addContexto(Contexto c) => listaContextos.add(c);
 
-  modificarContexto(int i, List<int>indicesElimC) {
-    listaContextos[i].elimininarCasillas(indicesElimC);
+  modificarContexto(int index, List<int>indicesElimC) {
+    listaContextos[index].elimininarCasillas(indicesElimC);
   }
 
 }
