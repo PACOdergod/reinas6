@@ -62,7 +62,7 @@ Contexto limpiar(Contexto contexto, List<int> nuevaReina) {
   var casillas = SingletonData().casillas;
   var index = casillas.indexOf(nuevaReina.toString());
   reinasAnteriores.add(index);
-  print("analizando casillas coolindantes a $reinasAnteriores");
+  // print("analizando casillas coolindantes a $reinasAnteriores");
 
 
   List<List<int>> casillasLibres = [];

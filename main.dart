@@ -3,7 +3,7 @@ import 'data.dart';
 import 'limpiar.dart';
 
 main(List<String> args) {
-  var tamano = 10;
+  var tamano = 12 ;
   var columnas = List.generate(tamano, (index) => index + 1);
   var filas = List.generate(tamano, (index) => index + 1);
   List<List<int>> total_casillas = [];
@@ -26,30 +26,46 @@ main(List<String> args) {
   //   var con = limpiar(primerContexto, c);
   //   crearRamificaciones(con, con.casillas);
   // }
-  crearRamificaciones(primerContexto, listaInicio, 1);
+  crearRamificaciones(primerContexto, listaInicio, 0);
 
   // una vez terminado el calculo hay que limpiar
   // la data y guardarla
-  data.limpiarDuplicados();
+  // data.limpiarDuplicados();
   data.imprimir();
-  data.guardarData(tamano);
+  // data.guardarData(tamano);
 }
 
 crearRamificaciones(
     Contexto contexto, List<List<int>> total_casillas, int columna) {
   // eliminar todas las casillas que sean diferentes a la columna
-  var casillasAnalizar = List.from(
-    total_casillas.where((cas) => cas.first == columna));
+  var casillasAnalizar =
+      List.from(contexto.casillas.where((cas) => cas.first == columna+1));
 
+  // talvez una menra de verificar si se debe seguir con el
+  // calculo es sacar una relacion estre
+  // las casillas sobrantes y el tamaño
+  //
   // print("casillas a analizar $casillasAnalizar");
+  // if (casillasAnalizar.isEmpty && columna < data.tamano) {
+  //   print("cancelando");
+  // }else{
+  var data = SingletonData();
+  var columnasSobrantes = data.tamano - columna;
+  print("${contexto.reinasAnteriores}");
+
+  print("columnas sobrantes: $columnasSobrantes");
+  print("casillas sobrantes: $casillasAnalizar");
+  if (total_casillas.length >= columnasSobrantes) {
+
   for (var casilla in casillasAnalizar) {
     var res = limpiar(contexto, casilla);
     if (res.casillas.isNotEmpty)
-      crearRamificaciones(res, res.casillas, columna+1);
+      crearRamificaciones(res, res.casillas, columna + 1);
     else {
-      var data = SingletonData();
       res.reinasAnteriores.sort();
       data.agregarInfo(res.reinasAnteriores);
     }
   }
+  }
+  // }
 }
