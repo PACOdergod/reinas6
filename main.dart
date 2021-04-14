@@ -3,7 +3,7 @@ import 'data.dart';
 import 'limpiar.dart';
 
 main(List<String> args) {
-  var tamano = 12 ;
+  var tamano = 12;
   var columnas = List.generate(tamano, (index) => index + 1);
   var filas = List.generate(tamano, (index) => index + 1);
   List<List<int>> total_casillas = [];
@@ -30,9 +30,9 @@ main(List<String> args) {
 
   // una vez terminado el calculo hay que limpiar
   // la data y guardarla
-  // data.limpiarDuplicados();
+  data.limpiarDuplicados();
   data.imprimir();
-  // data.guardarData(tamano);
+  data.guardarData(tamano);
 }
 
 crearRamificaciones(
@@ -41,31 +41,24 @@ crearRamificaciones(
   var casillasAnalizar =
       List.from(contexto.casillas.where((cas) => cas.first == columna+1));
 
-  // talvez una menra de verificar si se debe seguir con el
-  // calculo es sacar una relacion estre
-  // las casillas sobrantes y el tamaño
-  //
-  // print("casillas a analizar $casillasAnalizar");
-  // if (casillasAnalizar.isEmpty && columna < data.tamano) {
-  //   print("cancelando");
-  // }else{
+  
   var data = SingletonData();
   var columnasSobrantes = data.tamano - columna;
   print("${contexto.reinasAnteriores}");
-
   print("columnas sobrantes: $columnasSobrantes");
   print("casillas sobrantes: $casillasAnalizar");
-  if (total_casillas.length >= columnasSobrantes) {
 
-  for (var casilla in casillasAnalizar) {
-    var res = limpiar(contexto, casilla);
-    if (res.casillas.isNotEmpty)
-      crearRamificaciones(res, res.casillas, columna + 1);
-    else {
-      res.reinasAnteriores.sort();
-      data.agregarInfo(res.reinasAnteriores);
+
+  if (total_casillas.length >= columnasSobrantes) {
+    for (var casilla in casillasAnalizar) {
+      var res = limpiar(contexto, casilla);
+      if (res.casillas.isNotEmpty)
+        crearRamificaciones(res, res.casillas, columna + 1);
+      else {
+        res.reinasAnteriores.sort();
+        data.agregarInfo(res.reinasAnteriores);
+      }
     }
   }
-  }
-  // }
+  
 }

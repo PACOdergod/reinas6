@@ -16,8 +16,7 @@ class SingletonData {
 
   List<String> _data = [];
   agregarInfo(List<int> reinas) {
-    // if (reinas.length >= tamano)
-    _data.add(reinas.toString());
+    if (reinas.length >= tamano) _data.add(reinas.toString());
   }
 
   List<String> get listaReinas => _data;
@@ -27,7 +26,7 @@ class SingletonData {
   }
 
   imprimir() {
-    // for (var reinas in _data) print(reinas);
+    for (var reinas in _data) print(reinas);
     print(_data.length);
   }
 
