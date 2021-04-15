@@ -3,7 +3,7 @@ import 'data.dart';
 import 'limpiar.dart';
 
 main(List<String> args) {
-  var tamano = 12;
+  var tamano = 8;
   var columnas = List.generate(tamano, (index) => index + 1);
   var filas = List.generate(tamano, (index) => index + 1);
   List<List<int>> total_casillas = [];
@@ -32,7 +32,7 @@ main(List<String> args) {
   // la data y guardarla
   data.limpiarDuplicados();
   data.imprimir();
-  data.guardarData(tamano);
+  // data.guardarData(tamano);
 }
 
 crearRamificaciones(
