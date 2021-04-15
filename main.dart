@@ -20,13 +20,14 @@ main(List<String> args) {
   data.tamano = tamano;
   total_casillas.forEach((element) => data.casillas.add(element.toString()));
 
+  
   // aqui inicia el algoritmo
   var primerContexto = Contexto(total_casillas, filas, columnas, []);
   // for (var c in listaInicio) {
   //   var con = limpiar(primerContexto, c);
   //   crearRamificaciones(con, con.casillas);
   // }
-  crearRamificaciones(primerContexto, listaInicio, 0);
+  crearRamificaciones(primerContexto, listaInicio, 1);
 
   // una vez terminado el calculo hay que limpiar
   // la data y guardarla
@@ -39,21 +40,21 @@ crearRamificaciones(
     Contexto contexto, List<List<int>> total_casillas, int columna) {
   // eliminar todas las casillas que sean diferentes a la columna
   var casillasAnalizar =
-      List.from(contexto.casillas.where((cas) => cas.first == columna+1));
+      List.from(contexto.casillas.where((cas) => cas.first == columna));
 
   
   var data = SingletonData();
   var columnasSobrantes = data.tamano - columna;
-  print("${contexto.reinasAnteriores}");
-  print("columnas sobrantes: $columnasSobrantes");
-  print("casillas sobrantes: $casillasAnalizar");
+  // print("${contexto.reinasAnteriores}");
+  // print("columnas sobrantes: $columnasSobrantes");
+  // print("casillas sobrantes: $casillasAnalizar");
 
 
   if (total_casillas.length >= columnasSobrantes) {
     for (var casilla in casillasAnalizar) {
       var res = limpiar(contexto, casilla);
       if (res.casillas.isNotEmpty)
-        crearRamificaciones(res, res.casillas, columna + 1);
+        crearRamificaciones(res, res.casillas, columna+1);
       else {
         res.reinasAnteriores.sort();
         data.agregarInfo(res.reinasAnteriores);

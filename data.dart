@@ -38,4 +38,8 @@ class SingletonData {
     var file = new File('${t}x${t}.json');
     file.writeAsString(jsonEncode(_coordenadas));
   }
+
+  int _numeroIteraciones = 0;
+  nuevaIteracion() => _numeroIteraciones + 1;
+  get cantidadIteraciones => _numeroIteraciones;
 }
