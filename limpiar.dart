@@ -40,7 +40,7 @@ import 'data.dart';
 //   data.imprimir();
 // }
 
-Contexto limpiar(Contexto contexto, List<int> nuevaReina) {
+Contexto limpiar(Contexto contexto, List<int> coordenanaReina) {
   // recibire la casilla donde estara la reina
   // y del contexto obtendre todas las listas
   // para los calculos
@@ -53,14 +53,14 @@ Contexto limpiar(Contexto contexto, List<int> nuevaReina) {
   List<int> reinasAnteriores = List.from(contexto.reinasAnteriores);
 
   // eliminar de las listas las coordenadas de la reina
-  columnasLibres.remove(nuevaReina.first);
-  filasLibres.remove(nuevaReina.last);
-  crecientesOcupadas.add(nuevaReina.first + nuevaReina.last);
-  decrecientesOcupadas.add(nuevaReina.first - nuevaReina.last);
+  columnasLibres.remove(coordenanaReina.first);
+  filasLibres.remove(coordenanaReina.last);
+  crecientesOcupadas.add(coordenanaReina.first + coordenanaReina.last);
+  decrecientesOcupadas.add(coordenanaReina.first - coordenanaReina.last);
 
-  // obtener el indice de la nuevaReina y lo agrega a la lista
+  // obtener el indice de la coordenanaReina y lo agrega a la lista
   var casillas = SingletonData().casillas;
-  var index = casillas.indexOf(nuevaReina.toString());
+  var index = casillas.indexOf(coordenanaReina.toString());
   reinasAnteriores.add(index);
   // print("analizando casillas coolindantes a $reinasAnteriores");
 
