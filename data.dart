@@ -15,6 +15,7 @@ class SingletonData {
   // List<List<String>> totalCasillas = [];
 
   List<String> _coordenadas = [];
+  List<String> _indices = [];
   agregarInfo(List<int> indexReinas) {
     if (indexReinas.length >= tamano) {
       var listAux = [];
@@ -39,7 +40,7 @@ class SingletonData {
     file.writeAsString(jsonEncode(_coordenadas));
   }
 
-  int _numeroIteraciones = 0;
-  nuevaIteracion() => _numeroIteraciones + 1;
-  get cantidadIteraciones => _numeroIteraciones;
+  int _numeroRamificaciones = 0;
+  nuevaRama() => _numeroRamificaciones += 1;
+  get cantidadRamas => _numeroRamificaciones;
 }

@@ -1,10 +1,10 @@
 import 'contexto.dart';
 import 'data.dart';
-import 'limpiar.dart';
+// import 'limpiar.dart';
 import 'ramificacion.dart';
 
 main(List<String> args) {
-  var tamano = 4;
+  var tamano = 8;
   var columnas = List.generate(tamano, (index) => index + 1);
   var filas = List.generate(tamano, (index) => index + 1);
   List<List<int>> total_casillas = [];
@@ -23,12 +23,9 @@ main(List<String> args) {
 
   // aqui inicia el algoritmo
   var primerContexto = Contexto(total_casillas, filas, columnas, []);
-  // for (var c in listaInicio) {
-  //   var con = limpiar(primerContexto, c);
-  //   crearRamificaciones(con, con.casillas);
-  // }
+
   List<List<int>> casillasIniciales = [
-    [1,2]
+    // [1, 2]
     // [4,3]
   ];
   crearRamificaciones(primerContexto, listaInicio, 1,
@@ -37,6 +34,8 @@ main(List<String> args) {
   // una vez terminado el calculo hay que limpiar
   // la data y guardarla
   data.limpiarDuplicados();
-  data.imprimir();
-  // data.guardarData(tamano);
+  // data.imprimir();
+  // print(data.cantidadRamas);
+  data.guardarData(tamano);
+  print("termino el calculo");
 }
